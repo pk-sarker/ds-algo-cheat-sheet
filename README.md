@@ -11,7 +11,7 @@ Here are some data structures that are used mostly.
 * [Array](#array)
 
 
-#### Array
+### Array
 **Definition:**
 Array is a data structure consisting of a collection of elements, each identified 
 by at least one array index or key. An array is stored such that the position of each element can 
@@ -31,22 +31,18 @@ be computed from its index tuple by a mathematical formula.
 **When it is good to use:**
 * Available data is of same type, like `integer`, `string`, `character`... 
 * When ordering is required
-* Good for indexing 
-
+* Indexing is required
 
 **When it is bad to use:**
 * Available data is not same type.
 
 **Time Complexity:**
 * Indexing: 
-    * Linear array: `O(1)`
-    * Dynamic array: `O(1)`
+    * Linear array & Dynamic array: `O(1)`
 * Search: 
-    * Linear array: `O(n)`
-    * Dynamic array: `O(n)`
+    * Linear array & Dynamic array: `O(n)`
 * Optimized Search: 
-    * Linear array: `O(log n)`
-    * Dynamic array: `O(log n)`
+    * Linear array & Dynamic array: `O(log n)`
 * Insertion: 
     * Linear array: `n/a` 
     * Dynamic array: `O(n)`
