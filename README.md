@@ -9,6 +9,14 @@ operations that can be applied to the data.
 Here are some data structures that are used mostly.
 
 * [Array](#array)
+* [Linked List](#linked-list)
+* [Hash Table](#hash-table)
+* [Heap](#heap)
+* [Stack](#stack)
+* [Queue](#queue)
+* [Binary Tree](#binary-tree)
+* [Binary Search Tree-BST](#binary-search-tree-bst)
+* [Segment Tree](#segment-tree)
 
 
 ### Array
