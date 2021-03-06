@@ -90,7 +90,31 @@ a primitive or composite/object.
 **Space  Complexity:**\
 `O(n)`
 
+### Hash Table
+**Definition:**
+Hash Table organizes data based on `key` `value` pair. A [hash function](https://en.wikipedia.org/wiki/Hash_function) is used
+to compute an index or hash code which identifies the array of buckets or slots. The value can be found from that specific location.
 
+**Key points:**
+* Hash table is structured to optimize searching, insertion, and deletion. 
+* Hash collisions are when a hash function returns the same output for two distinct inputs.
+
+**When it is good to use:**
+* When there are lot of data and you need constant time(`O(1)`) read, write operation.
+* Don't need maintain ordering
+
+**Drawbacks**
+* Cost of good hashing function could be higher that other lookup algorithms(search tree)
+* There are posibility that same key my get assigned to different values, this is called hash collisions. 
+    - [Consistent hashing](https://en.wikipedia.org/wiki/Consistent_hashing) could resolve hash collision/conflict.
+
+**Time Complexity:**
+Indexing: `O(1)`
+Search: `O(1)`
+Insertion: `O(1)`
+
+**Space  Complexity:**\
+`O(n)`
 
 
 
