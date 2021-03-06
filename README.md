@@ -58,6 +58,38 @@ be computed from its index tuple by a mathematical formula.
 **Space  Complexity:**\
 `O(n)`
 
+### Linked List
+**Definition:**
+Linked list is a linear collection of data. Each element is represented by `node`. Linked list 
+doesn't store data in consecutive memory location. Each node stores data and a reference/pointer
+to next node. For a linked list the type of data in each node has to be same. Data element  could be
+a primitive or composite/object. 
+
+**Key points:**
+* Linked list may be circular where last node points to the first node.
+* Linked list could be doubly where each node contains the reference of next node and previous node.
+* Data is not stored consecutive memory blocks, unlike array. 
+* Nodes in a linked list must be read in order from the beginning as linked lists are inherently sequential access.
+* Not efficient where insertion happens any location other than start and end. It will need to search the position from beginning.  
+* Efficient where deletion happens more often, just need to change the next reference of previous node.
+
+**When it is good to use:**
+* When there are heavy insertion & deletion, Linked list provides constant time insertion & deletion.
+* By nature memory allocation is dynamic, if not sure about the size of data then linked list is a good choice.
+* Don't need random access to data, unlike array, searching starts from beginning/head.
+* Insertion in the middle doesn't happen too frequent, complexity is searching the insert position.
+
+**Time Complexity:**
+- Indexing: `O(n)`
+- Search: `O(n)`
+- Optimized Search: `O(n)`
+- Append: `O(1)`
+- Prepend: `O(1)`
+- Insertion: `O(n)`
+
+**Space  Complexity:**\
+`O(n)`
+
 
 
 
