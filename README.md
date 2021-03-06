@@ -108,13 +108,88 @@ to compute an index or hash code which identifies the array of buckets or slots.
 * There are posibility that same key my get assigned to different values, this is called hash collisions. 
     - [Consistent hashing](https://en.wikipedia.org/wiki/Consistent_hashing) could resolve hash collision/conflict.
 
-**Time Complexity:**
-Indexing: `O(1)`
-Search: `O(1)`
+**Time Complexity:**\
+Indexing: `O(1)`\
+Search: `O(1)`\
 Insertion: `O(1)`
 
 **Space  Complexity:**\
 `O(n)`
+
+### Stack
+**Definition:**
+Stack is a linear data structure that follows last in first out(`LIFO`). The item inserted/added last will be accessed
+first.
+
+**Key points:**
+* Stack maintains order, LIFO
+* Stack performs two operations:
+    - `PUSH`: add new element in data structure
+    - `POP`: remove most recently added element from data structure
+    
+**When it is good to use:**
+* When it is required to keep track of sequence of actions
+* Access elements in reverse order
+* For backtracking
+
+**Time Complexity:**\
+Insertion/Push: `O(1)`
+Deletion/Pop: `O(1)`
+
+**Space  Complexity:**\
+`O(n)`
+
+### Queue
+**Definition:**
+A queue is a collection of entities/linear structure that are maintained in a sequence and can be modified 
+by the addition of entities at one end of the sequence and the removal of entities from the other end of the sequence. 
+By convention, the end of the sequence at which elements are added is called the back, tail
+It follows First In First Out (FIFO).
+
+**Key points:**
+* Queue maintains order, FIFO
+* Queue performs two operation:
+    - `Enqueue`: add new element in data structure
+    - `Dequeue`: remove oldest element from data structure
+
+**When it is good to use:**
+
+**Drawbacks**
+
+**Time Complexity:**
+Insert: `O(1)`\
+Search: `O(n)`\
+Delete: `O(1)`\
+
+**Space  Complexity:**
+`O(n)`
+
+### Heap
+**Definition:**
+
+**Key points:**
+
+**When it is good to use:**
+
+**Drawbacks**
+
+**Time Complexity:**
+
+**Space  Complexity:**
+
+
+### Binary Tree
+**Definition:**
+
+**Key points:**
+
+**When it is good to use:**
+
+**Drawbacks**
+
+**Time Complexity:**
+
+**Space  Complexity:**
 
 
 
