@@ -1,22 +1,30 @@
 # Data Structure and Algorithm Cheat Sheet
 Data Structure &amp; Algorithm cheat sheet
 
+# Table of Content
+- [Data Structures](#data-structures)
+  - [Array](#array)
+  - [Linked List](#linked-list)
+  - [Hash Table](#hash-table)
+  - [Stack](#stack)
+  - [Queue](#queue)
+  - [Binary Tree](#binary-tree)
+  - [Binary Search Tree](#binary-search-tree)
+  - [Heap](#heap)
+  - [Self-balancing Trees](#self-balancing-trees)
+    - [AVL Tree](#avl-tree)
+    - [Red-Black Tree](#red-black-tree)
+    - [Splay Tree](#splay-tree)
+- [Algorithms](#algorithms)
+  - [Sorting](#sorting)
+  - [Searching](#searching)
+  - [Graph](#graph)
+  - [Optimization](#optimization)
+
 ## Data Structures
 Data structure is about organizing data, management, and storage format that enables efficient access and modification.
 More precisely, a data structure is a collection of data values, the relationships among them, and the functions or 
 operations that can be applied to the data. 
-
-Here are some data structures that are used mostly.
-
-* [Array](#array)
-* [Linked List](#linked-list)
-* [Hash Table](#hash-table)
-* [Heap](#heap)
-* [Stack](#stack)
-* [Queue](#queue)
-* [Binary Tree](#binary-tree)
-* [Binary Search Tree-BST](#binary-search-tree-bst)
-* [Segment Tree](#segment-tree)
 
 
 ### Array
@@ -164,32 +172,121 @@ Delete: `O(1)`\
 **Space  Complexity:**
 `O(n)`
 
-### Heap
-**Definition:**
-
-**Key points:**
-
-**When it is good to use:**
-
-**Drawbacks**
-
-**Time Complexity:**
-
-**Space  Complexity:**
-
-
 ### Binary Tree
 **Definition:**
+A binary tree is a [tree](https://en.wikipedia.org/wiki/Tree_(data_structure)) data structure in 
+which each node has at most two children, which are referred to as the *left child* and the *right child*. 
 
 **Key points:**
+- Binary tree is [rooted tree](https://en.wikipedia.org/wiki/Tree_(graph_theory)#Rooted_tree) and [ordered tree](https://en.wikipedia.org/wiki/Tree_(graph_theory)#Plane_tree) in which each node 
+  may have at-most two child nodes.
+- A binary tree is called *full binary tree* when every node has either 0 or 2 children. A full binary tree is either:
+  - A single vertex.
+  - A tree whose root node has two subtrees, both of which are **full binary trees**.
+- A binary tree is called **complete binary tree** when there are exactly *2^height* nodes at each level except the last level. Last level can have between 1 and *2^height* nodes and nodes are filled as left as possible.
+  - Level/height of root node is **zero**,
+  - Height of a node in a rooted tree is the length of the longest downward path to a leaf from that vertex
+- A *perfect binary tree* is a binary tree in which all interior nodes have two children and all leaves have the same depth or same level.
+- A *balanced binary tree* is a binary tree structure in which the left and right subtrees of every node differ in height by no more than **1**.
+- A *degenerate tree* is where each parent node has only one associated child node. The tree will behave like a linked list data structure.
+
 
 **When it is good to use:**
+* Binary tree is a good choice when there are relationship between some pair of elements, like `[(a,b),(e,f),(a,d),(b,e)]`
+* There is no order between each element
+
+**Time Complexity:**
+Here are complexities in general where every node will be checked for searching, 
+- Search: `O(n)` 
+- Insertion: `O(n)`, insertion is `O(1)` but it will take `O(n)` to find insert position.
+- Deletion: `O(n)`,  actual deletion is `O(1)` but it will take `O(n)` to find the node.
+
+**Space  Complexity:**\
+`O(n)`
+
+![Binary Trees](./img/binary-tree.png)
+
+### Binary Search Tree
+**Definition:** A binary search tree (BST) is a rooted binary tree whose internal nodes 
+each store a key greater than all the keys in the node's left subtree and less than those 
+in its right subtree.
+
+**Key points:**
+* Binary search tree is an ordered or sorted binary tree.
+* All the keys of left subtree is less than the node's key.
+* All the keys of right subtree is greater than the node's key.
+
+**When it is good to use:**
+* Use when dataset is sorted.
+* For searching, binary search trees allow binary search for fast lookup, addition and removal of data items.
 
 **Drawbacks**
+* A binary search tree can get out of balance, *degenerate tree*. 
 
 **Time Complexity:**
 
+|   | Average | Worst case |
+| ---- | ---- | ---- |
+| Search  | `O(log n)`  | `O(n)` |
+| Insert  | `O(log n)`  | `O(n)` |
+| Delete  | `O(log n)`  | `O(n)` |
+
 **Space  Complexity:**
+`O(n)`
+
+
+### Heap
+**Definition:**
+A heap is a specialized tree-based data structure which is essentially an almost complete tree that satisfies the heap property:
+- in a **max heap**, for any given *node C*, if *P* is a parent node of *C*, then the key (the value) of *P* is greater than or equal to the key of *C*. 
+- in a **min heap**, the key of *P* is less than or equal to the key of *C*.
+
+**Key points:**
+* A heap is also called the binary heap, in which the tree is a binary tree.
+* Heap has following operations:
+  - *find-max* (or find-min): find a maximum item of a max-heap, or a minimum item of a min-heap, respectively
+  - *insert*: adding a new key to the heap
+  - *extract-max* (or extract-min): returns the node of maximum value from a max heap after removing it from the heap
+  - *delete-max* (or delete-min): removing the root node of a max heap (or min heap), respectively
+  - *replace*: pop root and push a new key. More efficient than pop followed by push, since only need to balance once, not twice, and appropriate for fixed-size heaps.
+
+**When it is good to use:**
+* For in-place sorting, like [Heapsort](https://en.wikipedia.org/wiki/Heapsort).
+* Find maximum(*max-heap*) or minimum(*min-heap*) element at constant time from a set of elements.
+
+**Time Complexity:**
+
+|  | Operation | find-max | delete-max | insert | increase-key |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| Binary | `Θ(1)` | `Θ(log n)` | `O(log n)` | `O(log n)` | `Θ(n)` |
+
+
+**Space  Complexity:**\
+`O(n)`
+
+
+### Self-balancing Trees
+
+### AVL Tree
+**AVL tree** is a self-balancing binary search tree in which each node maintains extra information called a balance factor 
+whose value is either `-1`, `0` or `+1`.
+
+**Key points:**
+* In AVL Tree, the heights of the two child subtrees of any node differ by at most one.
+* Height balanced, not weight-balanced.
+* If at any time they differ by more than one, rebalancing is done to restore this property.
+* Balance factor of a node  is: 
+  - *BF(X) := Height(RightSubtree(X)) - Height(LeftSubtree(X))*, `BF(X) ∈ {1, 0, -1}`
+
+
+**Time Complexity:**
+| Algorithm	| Average | Worst case |
+| ---- | ---- | ---- |
+Search | `O(log n)` | `O(n)` |
+Insert | `O(log n)` | `O(log n)` |
+Delete | `O(log n)` | `O(log n)` |
+
+## Algorithms
 
 
 
