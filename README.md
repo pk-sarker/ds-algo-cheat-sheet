@@ -17,6 +17,7 @@ Data Structure &amp; Algorithm cheat sheet
     - [Splay Tree](#splay-tree)
 - [Algorithms](#algorithms)
   - [Sorting](#sorting)
+    - [Insertion Sort](#insertion-sort)
   - [Searching](#searching)
   - [Graph](#graph)
   - [Optimization](#optimization)
@@ -286,7 +287,43 @@ Search | `O(log n)` | `O(n)` |
 Insert | `O(log n)` | `O(log n)` |
 Delete | `O(log n)` | `O(log n)` |
 
+### Red-Black Tree
+A **red–black tree** is a kind of self-balancing binary search tree in which each node stores an extra information representing "color" ("red" or "black").
+Color is used to ensure that the tree remains balanced during insertions and deletions.
+
 ## Algorithms
 
+## Sorting
+### Insertion Sort
+Insertion sort is efficient comparison sort. In each iteration it removes an element from the input 
+data set and inserts into the correct position in the list being sorted. The choice of the element
+being removed from the input is random and the process is repeated until all the input elements have
+removed/gone through.
+
+**Pseudocode**
+```
+i ← 1
+while i < length(A)
+    x ← A[i]
+    j ← i - 1
+    while j >= 0 and A[j] > x
+        A[j+1] ← A[j]
+        j ← j - 1
+    end while
+    A[j+1] ← x
+    i ← i + 1
+end while
+```
+
+[Implementation](./java/src/com/dsalgo/sorting/InsertionSort.java)
+ 
+**Advantages**
+* In-place sorting, It requires only a constant amount *O(1)* of additional memory space.
+* Efficient for small data.
+
+**Complexity**
+- Best case: *O(n)*
+- Average: *O(n^2)*
+- Worse case: *O(n^2)*
 
 
