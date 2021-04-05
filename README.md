@@ -18,6 +18,7 @@ Data Structure &amp; Algorithm cheat sheet
 - [Algorithms](#algorithms)
   - [Sorting](#sorting)
     - [Insertion Sort](#insertion-sort)
+    - [Shell Sort](#shell-sort)
   - [Searching](#searching)
   - [Graph](#graph)
   - [Optimization](#optimization)
@@ -317,13 +318,71 @@ end while
 
 [Implementation](./java/src/com/dsalgo/sorting/InsertionSort.java)
  
-**Advantages**
+**Key Notes**
 * In-place sorting, It requires only a constant amount *O(1)* of additional memory space.
 * Efficient for small data.
+* 
 
 **Complexity**
 - Best case: *O(n)*
 - Average: *O(n^2)*
 - Worse case: *O(n^2)*
 
+### Shell Sort
+Shell sort is a generalization of insertion sort. Insertion sort works efficiently on input that is
+already almost sorted. Shell sort is also known as *n-gap* insertion sort. Instead of comparing  only 
+the adjacent pair, shell sort makes several passes and uses various gaps between adjacent elements. 
 
+Shellsort is actually a simple extension for insertion sort. The primary difference is its capability
+of exchanging elements that are far apart, making it considerably faster for elements to get to
+where they should be. For example, if the smallest element happens to be at the end of an array,
+with insertion sort it will require the full array of steps to put this element at the beginning of the
+array. However, with shell sort, this element can jump more than one step a time and reach the
+proper destination in fewer exchanges.
+
+The basic idea in shellsort is to exchange every hth element in the array. Now this can be
+confusing so we’ll talk more about this, h determines how far apart element exchange can happen,
+say for example take h as 13, the first element (index-0) is exchanged with the 14th element
+(index-13) if necessary (of course). The second element with the 15th element, and so on. Now if
+we take h as 1, it is exactly the same as a regular insertion sort.
+
+Shellsort works by starting with big enough (but not larger than the array size) h so as to allow
+eligible element exchanges that are far apart. Once a sort is complete with a particular h, the
+array can be said as h-sorted. The next step is to reduce h by a certain sequence, and again
+perform another complete h-sort. Once h is 1 and h-sorted, the array is completely sorted. Notice
+that the last sequence for ft is 1 so the last sort is always an insertion sort, except by this time the
+array is already well-formed and easier to sort.
+
+**Pseudocode**
+```
+n ← input data length
+gap ← n/2 
+while gap > 0
+    i ← gap
+    while i < length(A)
+        x ← A[i]
+        j ← i - 1
+        while j >= 0 and A[j] > x
+            A[j+1] ← A[j]
+            j ← j - 1
+        end while
+        A[j+1] ← x
+        i ← i + 1
+    end while
+    gap ← gap / 2
+end while
+```
+
+
+[Implementation](./java/src/com/dsalgo/sorting/ShellSort.java)
+ 
+**Key Points**
+* Not stable sorting algorithm since the elements with the same values can change their order of sequence.
+* In-place sorting, It requires only a constant amount *O(1)* of additional memory space.
+* It is better than Insertion sort and 5 times faster than Bubble sort.
+* Efficient for small data.
+* Not that efficient as merge sort and quicksort.
+
+**Complexity**
+- Best case: *O(n log n)*
+- Worse case: *O(n^2)*
