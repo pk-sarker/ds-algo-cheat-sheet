@@ -21,6 +21,7 @@ Data Structure &amp; Algorithm cheat sheet
     - [Shell Sort](#shell-sort)
     - [Merge Sort](#merge-sort)
     - [Quick Sort](#quick-sort)
+    - [Topological Sort](#topological-sort)
   - [Searching](#searching)
     - [Quick Select](#quick-select)
   - [Graph](#graph)
@@ -494,12 +495,45 @@ partition(A, lo, hi) is
     swap A[i] with A[hi]
     return i
 ```
-[Implementation](./java/src/com/dsalgo/searching/)
+[Implementation](./java/src/com/dsalgo/sorting/Quicksort.java)
 
 **Complexity**
 - Best case: *O(n log n)*
 - Average:  *O(n log n)*
 - Worse case: *O(n^2)*
+
+### Topological Sort
+A topological sort or topological ordering of a directed graph is a linear ordering of its vertices such that 
+for every directed edge *uv* from vertex *u* to vertex *v*, *u* comes before *v* in the ordering.
+
+**Key Point**
+* A topological ordering is possible if and only if the graph has no directed cycles, that is, if it is a directed acyclic graph (DAG)
+* There could be more than one valid solution or ordering possible.
+
+**Pseudocode**
+```
+L ← Empty list that will contain the sorted elements
+S ← Set of all nodes with no incoming edge
+
+while S is not empty do
+    remove a node n from S
+    add n to L
+    for each node m with an edge e from n to m do
+        remove edge e from the graph
+        if m has no other incoming edges then
+            insert m into S
+
+if graph has edges then
+    return error   (graph has at least one cycle)
+else
+    return L   (a topologically sorted order)
+```
+
+
+[Implementation](./java/src/com/dsalgo/sorting/TopologicalSort.java)
+
+**Complexity**
+*O(E + V)*
 
 ## Searching
 
