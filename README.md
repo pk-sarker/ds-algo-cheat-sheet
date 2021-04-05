@@ -20,6 +20,7 @@ Data Structure &amp; Algorithm cheat sheet
     - [Insertion Sort](#insertion-sort)
     - [Shell Sort](#shell-sort)
   - [Searching](#searching)
+    - [Quick Select](#quick-select)
   - [Graph](#graph)
   - [Optimization](#optimization)
 
@@ -392,7 +393,11 @@ Merge sort is a Divide and Conquer algorithm. It divides the input data in to tw
 until there is single element then start merging.
 
 **Key Points**
+* It contains two process: 
+    - selection or dividing the array
+    - merge the results
 * Merge sort accesses the data in a sequential manner.
+* Merge sort is Quick sort’s complement
 
 Conceptually, a merge sort works as follows:
 * Divide the unsorted list into *n* sublists, each containing one element (a list of one element is considered sorted).
@@ -455,3 +460,60 @@ Merge(data, startIndex, middleIndex, endIndex)
 - Best case: *Ω(n log n)*
 - Average:  *Θ(n log n)*
 - Worse case: *O(n log n)*
+
+
+## Searching
+
+### Quick Select
+Quickselect is a selection algorithm to find the *k*th smallest element in an unordered list. 
+It is related to the quicksort sorting algorithm.
+
+**Key Points**
+* Quickselect uses the same overall approach as quicksort
+    - choosing one element as a pivot and partitioning the data in two based on the pivot, accordingly as less than or greater than the pivot. 
+    - However, instead of recursing into both sides, as in quicksort, quickselect only recurses into one side – the side with the element it is searching for. This reduces the average complexity from *O(n log n)* to *O(n)*, with a worst case of *O(n^2)*.
+    
+* Quickselect is in-place algorithm
+* Best for finding *n*-th smaller/larger element in a unsorted array
+
+
+**Pseudocode**
+```
+## Partition process
+partition(data, left, right, pivotIndex)
+    pivotValue ← data[pivotIndex]
+    swap data[pivotIndex] and data[right]  // Move pivot to end
+    storeIndex ← left
+    for i from left to right − 1 do
+        if data[i] < pivotValue then
+            swap data[storeIndex] and data[i]
+            increment storeIndex
+    swap data[right] and data[storeIndex]  // Move pivot to its final place
+    return storeIndex
+
+## Select process
+// Returns the k-th smallest element of list within left..right inclusive
+// (i.e. left <= k <= right).
+select(data, left, right, k)
+    if left = right        // If the list contains only one element,
+        return data[left]  // return that element
+    pivotIndex  := ...     // select a pivotIndex between left and right,
+                           // e.g., left + floor(rand() % (right − left + 1))
+    pivotIndex  ← partition(data, left, right, pivotIndex)
+    // The pivot is in its final sorted position
+    if k = pivotIndex
+        return data[k]
+    else if k < pivotIndex
+        return select(data, left, pivotIndex − 1, k)
+    else
+        return select(data, pivotIndex + 1, right, k) 
+```
+
+
+[Implementation](./java/src/com/dsalgo/searching/Quickselect.java)
+
+**Complexity**
+- Best case: *O(n)*
+- Average:  *O(n)*
+- Worse case: *O(n^2)*
+
