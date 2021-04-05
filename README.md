@@ -386,3 +386,72 @@ end while
 **Complexity**
 - Best case: *O(n log n)*
 - Worse case: *O(n^2)*
+
+### Merge Sort
+Merge sort is a Divide and Conquer algorithm. It divides the input data in to two halves, repeatedly keep dividing
+until there is single element then start merging.
+
+**Key Points**
+* Merge sort accesses the data in a sequential manner.
+
+Conceptually, a merge sort works as follows:
+* Divide the unsorted list into *n* sublists, each containing one element (a list of one element is considered sorted).
+* Repeatedly merge sublists to produce new sorted sublists until there is only one sublist remaining. This will be the sorted list.
+
+**Pseudocode**
+```
+Sort(data, startIndex, endIndex):
+    if endIndex - startIndex <= 1:
+        return
+    middleIndex ← startIndex + (endIndex-startIndex)/2
+    Sort(data, startIndex, middleIndex)
+    Sort(data, middleIndex+1, endIndex)
+    
+    Merge(data, startIndex, middleIndex, endIndex)
+
+Merge(data, startIndex, middleIndex, endIndex)
+    leftArraySize ← middleIndex - startIndex + 1
+    rightArraySize ← endIndex - middleIndex
+    leftArray ← [leftArraySize]
+    rightArray ← [rightArraySize]
+    
+    # add elements to leftArray
+    i ← 0
+    while i < leftArraySize:
+        leftArray[i] ← data[startIndex+i]
+    # add elements to rightArray
+    i ← 0
+    while i < rightArraySize:
+        rightArray[i] ← data[middleIndex+1+i]
+    
+    i ← 0
+    j ← 0
+    k ← startIndex
+    
+    while i < leftArraySize && j < rightArraySize
+        if leftArray[i] <= rightArray[j]
+            data[k] ← leftArray[i]
+            i ← i+1
+        else
+            data[k] ← rightArray[j]
+            j ← j+1
+        k ← k + 1
+    
+    # copy the remaining elements
+    while i < leftArraySize
+        data[k] ← leftArray[i]
+        i ← i+1
+        k ← k+1
+    
+    while j < rightArraySize
+        data[k] ← rightArray[j]
+        j ← j+1
+        k ← k+1
+```
+
+[Implementation](./java/src/com/dsalgo/sorting/MergeSort.java)
+
+**Complexity**
+- Best case: *Ω(n log n)*
+- Average:  *Θ(n log n)*
+- Worse case: *O(n log n)*
